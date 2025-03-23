@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Compile
+      run: g++ -std=c++17 -Iinclude src/main.cpp -o raytracer
+
+    - name: Run and verify output
+      run: |
+        mkdir -p output
+        ./raytracer > output/image.ppm
+        
+        # Basic PPM format verification
+        head -n 3 output/image.ppm | tee ppm-header.txt
+        echo "Checking PPM header..."
+        grep -q "P3" ppm-header.txt
+        grep -q "256 256" ppm-header.txt
+        grep -q "255" ppm-header.txt
+
+        # Verify pixel data exists
+        TOTAL_PIXELS=$((256 * 256))
+        ACTUAL_LINES=$(wc -l < output/image.ppm)
+        [ "$ACTUAL_LINES" -ge $((TOTAL_PIXELS + 3)) ] || exit 1
+
+    - name: Upload PPM
+      uses: actions/upload-artifact@v3
+      with:
+        name: gradient-image
+        path: output/image.ppm
