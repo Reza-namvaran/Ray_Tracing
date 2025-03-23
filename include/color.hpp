@@ -6,8 +6,6 @@
 using Color = Vector3;
 
 inline void write_color(std::ostream& out, const Color& pixel_color) {
-  std::clog << "\rWriting Color\n" << std::flush;
-
   auto r = pixel_color.x();
   auto g = pixel_color.y();
   auto b = pixel_color.z();
