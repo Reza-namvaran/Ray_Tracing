@@ -6,6 +6,8 @@ project(ray_tracer
     VERSION 0.1
 )
 
+include_directories(./include)
+
 add_executable(${PROJECT_NAME}
   main.cc
 )
