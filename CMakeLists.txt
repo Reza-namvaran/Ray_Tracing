@@ -8,6 +8,4 @@ project(ray_tracer
 
 include_directories(./include)
 
-add_executable(${PROJECT_NAME}
-  main.cc
-)
+add_subdirectory(./src)
