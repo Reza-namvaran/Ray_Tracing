@@ -11,6 +11,7 @@ int main() {
   
   // Rendering
   for (size_t j = 0; j < image_height; ++j) {
+    std::clog << "\rRemaining scanlines: " << (image_height - j) << ' ' << std::flush;
     for (size_t i = 0; i < image_width; ++i) {
       auto r = (double)(i) / (image_width - 1);
       auto g = 0.0;
@@ -24,5 +25,6 @@ int main() {
     }
   }
 
+  std::clog << "\rDone.                 \n";
   return 0;
 }
