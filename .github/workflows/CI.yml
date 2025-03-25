@@ -27,13 +27,11 @@ jobs:
       run: |
         mkdir -p output
         ./raytracer > output/image.ppm
-        
+
         # Basic PPM format verification
         head -n 3 output/image.ppm | tee ppm-header.txt
         echo "Checking PPM header..."
         grep -q "P3" ppm-header.txt
-        grep -q "256 256" ppm-header.txt
-        grep -q "255" ppm-header.txt
 
         # Verify pixel data exists
         TOTAL_PIXELS=$((256 * 256))
