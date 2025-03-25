@@ -7,7 +7,7 @@
 class Vector3 {
   public:
     double el[3];
-    
+
     Vector3() : el{0, 0, 0} {}
     Vector3(double el0, double el1, double el2) : el{el0, el1, el2} {}
 
@@ -32,7 +32,7 @@ class Vector3 {
       this->el[0] *= k;
       this->el[1] *= k;
       this->el[2] *= k;
-      return *this;   
+      return *this;
     }
 
 
@@ -72,12 +72,17 @@ inline Vector3 operator*(const Vector3& u, const Vector3& v) {
 
 
 inline Vector3 operator*(const Vector3& v, double k) {
+  return Vector3(v.el[0] * k, v.el[1] * k, v.el[2] * k);
+}
+
+inline Vector3 operator*(double k, const Vector3& v) {
   return v * k;
 }
 
 inline Vector3 operator/(const Vector3& v, double k) {
   return v * (1/k);
 }
+
 
 inline double dot(const Vector3& u, const Vector3& v) {
   return u.el[0] * v.el[0]
