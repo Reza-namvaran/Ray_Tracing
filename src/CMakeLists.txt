@@ -1,5 +1,6 @@
 set (PROJECT_SOURCES
     main.cc
+    sphere.cc
 )
 
 add_executable(${PROJECT_NAME}
