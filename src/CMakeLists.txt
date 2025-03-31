@@ -1,6 +1,7 @@
 set (PROJECT_SOURCES
     main.cc
     sphere.cc
+    hittable_list.cc
 )
 
 add_executable(${PROJECT_NAME}
