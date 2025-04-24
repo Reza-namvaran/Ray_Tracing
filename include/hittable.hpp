@@ -1,7 +1,7 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
-#include "ray.hpp"
+#include "ray_tracing.hpp"
 
 class HitRecord {
   public:
@@ -21,7 +21,7 @@ class HitRecord {
 class Hittable {
   public:
     virtual ~Hittable() = default;
-    
+
     virtual bool hit(const Ray& ray, double ray_t_min, double ray_t_max, HitRecord& rec) const = 0;
 };
 

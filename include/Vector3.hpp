@@ -1,8 +1,7 @@
 #ifndef VECTOR3_H
 #define VECTOR3_H
 
-#include <cmath>
-#include <iostream>
+#include "ray_tracing.hpp"
 
 class Vector3 {
   public:
